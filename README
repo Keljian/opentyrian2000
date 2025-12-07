@@ -1,6 +1,9 @@
 OpenTyrian2000
 ================================================================================
 
+Keljian mods: Added opengl engine with shader smoothing for better graphics, added AVX512/AVX2 for funsies
+to sprites and video.
+
 OpenTyrian2000 is an open-source port of the DOS game Tyrian. It is a fork of
 OpenTyrian, with the end goal being to replicate the experience of Tyrian 2000
 as closely as possible.
