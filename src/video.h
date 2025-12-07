@@ -47,6 +47,7 @@ extern SDL_Window *main_window;
 extern SDL_PixelFormat *main_window_tex_format;
 
 void init_video(void);
+int get_display_refresh_rate(void);
 
 void video_on_win_resize(void);
 void reinit_fullscreen(int new_display);

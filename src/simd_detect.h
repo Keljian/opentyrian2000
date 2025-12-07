@@ -1,6 +1,6 @@
-/* 
+/*
  * OpenTyrian: A modern cross-platform port of Tyrian
- * Copyright (C) 2007-2009  The OpenTyrian Development Team
+ * Copyright (C) 2007-2010  The OpenTyrian Development Team
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -16,31 +16,27 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-#ifndef LOUDNESS_H
-#define LOUDNESS_H
 
-#include "opentyr.h"
-#include "opl.h"
+#ifndef SIMD_DETECT_H
+#define SIMD_DETECT_H
 
-#include "SDL.h"
+#include <stdbool.h>
 
-extern int audioSampleRate;
+typedef struct {
+	bool sse2;
+	bool sse3;
+	bool ssse3;
+	bool sse41;
+	bool sse42;
+	bool avx;
+	bool avx2;
+	bool avx512f;
+	bool avx512bw;
+} CPU_Features;
 
-extern unsigned int song_playing;
+extern CPU_Features cpu_features;
 
-extern bool audio_disabled, music_disabled, samples_disabled;
+void detect_cpu_features(void);
+const char* get_simd_status(void);
 
-bool init_audio(void);
-void deinit_audio(void);
-
-void load_music(void);
-void play_song(unsigned int song_num);
-void restart_song(void);
-void stop_song(void);
-void fade_song(void);
-
-void set_volume(Uint8 musicVolume, Uint8 sampleVolume);
-
-void multiSamplePlay(const Sint16 *samples, size_t sampleCount, Uint8 chan, Uint8 vol);
-
-#endif /* LOUDNESS_H */
+#endif /* SIMD_DETECT_H */
